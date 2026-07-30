@@ -1,11 +1,5 @@
-import ThemeToggle from "@/components/layout/ThemeToggle";
+import Hero from "@/components/sections/Hero";
 
 export default function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <button>Home </button>
-
-      <ThemeToggle />
-    </div>
-  );
+  return <Hero />;
 }

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Search } from "lucide-react";
+import { FiMenu, FiX, FiSearch } from "react-icons/fi";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 
@@ -108,7 +108,7 @@ export default function Navbar() {
             aria-label="Search"
             className="inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors hover:bg-surface-hover"
           >
-            <Search size={18} />
+            <FiSearch size={18} />
           </button>
 
           <ThemeToggle />
@@ -120,7 +120,7 @@ export default function Navbar() {
             onClick={() => setIsOpen((prev) => !prev)}
             className="inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors hover:bg-surface-hover md:hidden"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
         </div>
       </motion.div>

@@ -8,6 +8,8 @@
   --surface-hover: #ececec;
   --border: #e2e2e2;
   --foreground: #171717;
+  --accent: #7c3aed;
+  --accent-soft: #a78bfa;
 }
 
 [data-theme="dark"] {
@@ -24,6 +26,8 @@
   --color-surface-hover: var(--surface-hover);
   --color-border: var(--border);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-inter);
   --font-heading: var(--font-space-grotesk);
   --font-mono: var(--font-jetbrains-mono);

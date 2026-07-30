@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { FiMoon, FiSun } from "react-icons/fi";
 import { useTheme } from "./ThemeProvider";
 
 export default function ThemeToggle() {
@@ -13,7 +13,7 @@ export default function ThemeToggle() {
       aria-label="Toggle theme"
       className="inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors hover:bg-surface-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-current"
     >
-      {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+      {theme === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />}
     </button>
   );
 }

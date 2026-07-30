@@ -1,7 +1,9 @@
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
+import Navbar from "@/components/layout/Navbar"
+import Footer from "@/components/layout/Footer"
+import ThemeScript from "@/components/layout/ThemeScript"
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -23,15 +25,6 @@ export const metadata = {
   description: "Mohit Decodes - Learn Industry Standard Tech Stacks and Tools",
 };
 
-const themeInitScript = `(function(){
- try{
-  var s=localStorage.getItem("theme");
-  document.documentElement.dataset.theme=s==="light"?"light":"dark";
- }catch(e){
-  document.documentElement.dataset.theme="dark";
- }
-})();`
-
 export default function RootLayout({ children }) {
   return (
     <html
@@ -39,13 +32,14 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      </head>
       <body className="min-h-full flex flex-col">
+        <ThemeScript />
         <ThemeProvider>
-          <Navbar/>
+          <Navbar />
+          <div className="flex-1" >
           {children}
+          </div>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
