@@ -188,15 +188,15 @@ export default function HeroBackground({ theme = "dark", children, className = "
         </g>
 
         <g>
-          <g style={{ animation: "om-sway 16s ease-in-out infinite alternate", transformOrigin: "960px 1550px" }}>
-            <g style={{ animation: "om-sway-rev 16s ease-in-out infinite alternate", transformOrigin: "329px 981px" }}>
+          <g style={{ animation: "om-spin 40s linear infinite", transformOrigin: "960px 1550px" }}>
+            <g style={{ animation: "om-spin-rev 40s linear infinite", transformOrigin: "329px 981px" }}>
               <g transform="translate(329,981)">
                 <circle r="34" fill="rgba(0,0,0,0.18)" stroke="rgba(255,255,255,0.14)" strokeWidth="1" filter="url(#om-node-glow)" />
                 <ellipse cx="0" cy="-5" rx="8" ry="3" fill="none" stroke="var(--accent)" strokeWidth="1.6" />
                 <path d="M-8,-5 v7 c0,1.7 3.6,3 8,3 s8,-1.3 8,-3 v-7" fill="none" stroke="var(--accent)" strokeWidth="1.6" strokeLinecap="round" />
               </g>
             </g>
-            <g style={{ animation: "om-sway-rev 16s ease-in-out infinite alternate", transformOrigin: "1591px 981px" }}>
+            <g style={{ animation: "om-spin-rev 40s linear infinite", transformOrigin: "1591px 981px" }}>
               <g transform="translate(1591,981)">
                 <circle r="34" fill="rgba(0,0,0,0.18)" stroke="rgba(255,255,255,0.14)" strokeWidth="1" filter="url(#om-node-glow)" />
                 <rect x="-10" y="-9" width="20" height="18" rx="2" fill="none" stroke="var(--accent)" strokeWidth="1.6" />
@@ -206,14 +206,14 @@ export default function HeroBackground({ theme = "dark", children, className = "
             </g>
           </g>
 
-          <g style={{ animation: "om-sway 18s ease-in-out infinite alternate", transformOrigin: "960px 1550px" }}>
-            <g style={{ animation: "om-sway-rev 18s ease-in-out infinite alternate", transformOrigin: "257px 770px" }}>
+          <g style={{ animation: "om-spin 45s linear infinite", transformOrigin: "960px 1550px" }}>
+            <g style={{ animation: "om-spin-rev 45s linear infinite", transformOrigin: "257px 770px" }}>
               <g transform="translate(257,770)">
                 <circle r="34" fill="rgba(0,0,0,0.18)" stroke="rgba(255,255,255,0.14)" strokeWidth="1" filter="url(#om-node-glow)" />
                 <path d="M0,-9 L2.4,-2.4 L9,0 L2.4,2.4 L0,9 L-2.4,2.4 L-9,0 L-2.4,-2.4 Z" fill="var(--accent)" />
               </g>
             </g>
-            <g style={{ animation: "om-sway-rev 18s ease-in-out infinite alternate", transformOrigin: "1663px 770px" }}>
+            <g style={{ animation: "om-spin-rev 45s linear infinite", transformOrigin: "1663px 770px" }}>
               <g transform="translate(1663,770)">
                 <circle r="34" fill="rgba(0,0,0,0.18)" stroke="rgba(255,255,255,0.14)" strokeWidth="1" filter="url(#om-node-glow)" />
                 <circle cx="-6" cy="-7" r="2.2" fill="none" stroke="var(--accent)" strokeWidth="1.5" />

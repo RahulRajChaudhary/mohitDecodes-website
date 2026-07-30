@@ -5,9 +5,9 @@ import HeroBackground, { getColors } from "./HeroBackground";
 import { useTheme } from "@/components/layout/ThemeProvider";
 
 const STATS = [
-  { label: "Subscribers", value: "100K+" },
+  { label: "Subscribers", value: "22K+" },
   { label: "Videos", value: "200+" },
-  { label: "Students", value: "10K+" },
+  { label: "Students", value: "5K+" },
   { label: "Resources", value: "50+" },
 ];
 
@@ -34,11 +34,7 @@ function useDecodeText(target, { frames = 16, speed = 45 } = {}) {
   return text || target;
 }
 
-/**
- * Hero section: HeroBackground effects + centered copy.
- * The real Navbar (theme toggle, nav links, socials) renders once in
- * app/layout.js above this — Hero only owns the decorative background and copy.
- */
+
 export default function Hero({
   youtubeUrl = "https://www.youtube.com/@MohitDecodes",
   topmateUrl = "https://topmate.io/mohitdecodes",
@@ -61,12 +57,15 @@ export default function Hero({
         <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "clamp(36px,min(7vw,12vh),92px)", lineHeight: 1.02, letterSpacing: "-0.03em", color: c.text, minHeight: "1.1em" }}>
           {part1}
           {settled ? (
-            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: "0.7em", height: "0.7em", margin: "0 0.02em", verticalAlign: "-0.08em" }}>
+            <a
+              href={youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube"
+              style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: "0.7em", height: "0.7em", margin: "0 0.02em", verticalAlign: "-0.08em", cursor: "pointer" }}
+            >
               <svg width="100%" height="100%" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" fill="none" stroke={c.accent} strokeWidth="2.6" />
                 <path d="M10 8l6 4-6 4z" fill={c.accent} />
               </svg>
-            </span>
+            </a>
           ) : mid}
           {part3}
         </h1>
@@ -99,17 +98,6 @@ export default function Hero({
           ))}
         </div>
       </div>
-
-      <a
-        href={youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube"
-        style={{
-          position: "absolute", right: "9%", bottom: "8%", zIndex: 3, width: 64, height: 64,
-          borderRadius: "50%", background: `linear-gradient(135deg, ${c.accentBright}, ${c.accent})`,
-          display: "flex", alignItems: "center", justifyContent: "center", boxShadow: `0 0 40px ${c.accent}`,
-        }}
-      >
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="#ffffff"><path d="M6 4l14 8-14 8z" /></svg>
-      </a>
     </HeroBackground>
   );
 }
