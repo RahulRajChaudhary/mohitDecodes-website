@@ -126,7 +126,7 @@ export default function HeroBackground({ theme = "dark", children, className = "
 
   return (
     <div
-      className={`relative min-h-screen overflow-hidden ${className}`}
+      className={`relative min-h-fit lg:min-h-screen overflow-hidden ${className}`}
       style={{ ...vars, background: "var(--bg)", fontFamily: "'Inter', sans-serif", transition: "background .4s ease" }}
     >
       <style>{KEYFRAMES}</style>
@@ -226,6 +226,15 @@ export default function HeroBackground({ theme = "dark", children, className = "
           </g>
         </g>
       </svg>
+
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", left: 0, right: 0, bottom: 0, height: "45%", minHeight: 200,
+          background: "linear-gradient(to bottom, transparent 0%, transparent 55%, var(--bg) 96%)",
+          pointerEvents: "none", zIndex: 2,
+        }}
+      />
 
       <div style={{ position: "relative", zIndex: 10 }}>{children}</div>
     </div>

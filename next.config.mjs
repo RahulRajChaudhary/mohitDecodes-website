@@ -2,6 +2,9 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "i.ytimg.com" }],
+  },
 };
 
 export default nextConfig;

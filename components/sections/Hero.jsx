@@ -49,12 +49,12 @@ export default function Hero({
 
   return (
     <HeroBackground theme={theme}>
-      <div style={{ position: "relative", zIndex: 10, maxWidth: 880, margin: "0 auto", padding: "clamp(26px,5.5vh,64px) 24px clamp(22px,5vh,56px)", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 14px", borderRadius: 999, border: `1px solid ${c.border}`, background: c.surface, fontFamily: "'JetBrains Mono', monospace", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: c.textMuted, marginBottom: "clamp(12px,2.2vh,22px)", whiteSpace: "nowrap", width: "fit-content" }}>
+      <div style={{ position: "relative", zIndex: 10, maxWidth: 880, margin: "0 auto", padding: "clamp(32px,7vh,72px) 24px clamp(28px,6vh,64px)", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 14px", borderRadius: 999, border: `1px solid ${c.border}`, background: c.surface, fontFamily: "'JetBrains Mono', monospace", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: c.textMuted, marginBottom: "clamp(14px,2.6vh,26px)", whiteSpace: "nowrap", width: "fit-content" }}>
           $ whoami
         </div>
 
-        <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "clamp(36px,min(7vw,12vh),92px)", lineHeight: 1.02, letterSpacing: "-0.03em", color: c.text, minHeight: "1.1em" }}>
+        <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "clamp(38px,min(7.5vw,13vh),96px)", lineHeight: 1.02, letterSpacing: "-0.03em", color: c.text, minHeight: "1.1em" }}>
           {part1}
           {settled ? (
             <a
@@ -70,11 +70,11 @@ export default function Hero({
           {part3}
         </h1>
 
-        <p style={{ marginTop: "clamp(12px,2.2vh,20px)", maxWidth: 560, fontSize: "clamp(16px,1.2vw,18px)", lineHeight: 1.65, color: c.textMuted }}>
+        <p style={{ marginTop: "clamp(14px,2.6vh,24px)", maxWidth: 560, fontSize: "clamp(16px,1.4vw,19px)", lineHeight: 1.65, color: c.textMuted }}>
           Practical coding tutorials, real projects, and 1:1 mentorship — everything you need to actually ship code, not just watch videos about it.
         </p>
 
-        <div style={{ marginTop: "clamp(16px,3vh,28px)", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: 14 }}>
+        <div style={{ marginTop: "clamp(20px,3.6vh,32px)", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: 14 }}>
           <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `linear-gradient(135deg, ${c.accentBright}, ${c.accent})`, color: "#ffffff", fontSize: 15, fontWeight: 600, padding: "14px 26px", borderRadius: 999, boxShadow: `0 16px 34px -14px ${c.accent}` }}>
             Explore Courses
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
@@ -85,11 +85,11 @@ export default function Hero({
           </a>
         </div>
 
-        <a href={topmateUrl} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: "clamp(10px,1.7vh,18px)", fontSize: 13, color: c.textFaint }}>
+        <a href={topmateUrl} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: "clamp(12px,2vh,20px)", fontSize: 13, color: c.textFaint }}>
           Or book a 1:1 mentorship session on Topmate →
         </a>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(90px,1fr))", gap: "clamp(20px,3vw,36px)", marginTop: "clamp(20px,4.5vh,44px)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(90px,1fr))", gap: "clamp(22px,3.4vw,40px)", marginTop: "clamp(24px,5.5vh,52px)" }}>
           {STATS.map((stat) => (
             <div key={stat.label}>
               <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 26, color: c.text }}>{stat.value}</div>

@@ -7,13 +7,11 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { label: "About", href: "/about" },
-  { label: "Courses", href: "/courses" },
-  { label: "Videos", href: "/videos" },
-  { label: "Blogs", href: "/blogs" },
-  { label: "Roadmaps", href: "/roadmaps" },
-  { label: "Resources", href: "/resources" },
-  { label: "Contact", href: "/contact" },
+  { label: "Videos", href: "/#videos" },
+  { label: "Resources", href: "/#resources" },
+  { label: "Blogs", href: "/#blogs" },
+  { label: "Roadmaps", href: "/#roadmaps" },
+  { label: "About", href: "/#about" },
 ];
 
 const DOCK_RANGE = [0, 120];
@@ -29,7 +27,6 @@ export default function Navbar() {
   // wherever scrollY actually is right now, on whatever page you're on,
   // in both directions. A fresh page load legitimately starts at 0
   // (full width) even if the previous page was scrolled/docked.
-  //
   // Each raw transform is piped through useSpring so instant jumps in
   // scrollY (e.g. Next.js resetting scroll to 0 on navigation) animate
   // smoothly toward the new value instead of snapping in one frame.
@@ -108,7 +105,7 @@ export default function Navbar() {
             aria-label="Search"
             className="inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors hover:bg-surface-hover"
           >
-            <FiSearch size={18} />
+            <FiSearch size={20}  />
           </button>
 
           <ThemeToggle />
