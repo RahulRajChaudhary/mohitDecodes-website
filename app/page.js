@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import VideosSection from "@/components/sections/VideosSection";
+import About from "@/components/sections/About";
 import StubSection from "@/components/sections/StubSection";
 import { getLatestVideos } from "@/lib/youtube";
 
@@ -15,7 +16,7 @@ export default async function Home() {
       <StubSection id="resources" title="Resources" />
       <StubSection id="blogs" title="Blogs" />
       <StubSection id="roadmaps" title="Roadmaps" />
-      <StubSection id="about" title="About" />
+      <About />
     </>
   );
 }

@@ -50,7 +50,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <dic>
+          <div>
             <h3 className="font-heading text-sm font-semibold text-foreground">
               Pages
             </h3>
@@ -67,23 +67,37 @@ export default function Footer() {
               ))}
             </ul>
 
-          </dic>
+          </div>
 
           <div>
             <h3 className="font-heading text-sm font-semibold text-foreground">
               Learn
             </h3>
             <ul className="mt-4 space-y-2">
-              {learnLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-foreground/80 transition-colors hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {learnLinks.map((link) => {
+                const isExternal = link.href.startsWith("http");
+                return (
+                  <li key={link.href}>
+                    {isExternal ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

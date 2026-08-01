@@ -4,15 +4,14 @@ export const legalLinks = [
 ];
 
 export const learnLinks = [
-  { label: "Tutorials", href: "/courses" },
-  { label: "Notes", href: "/resources" },
-  { label: "Topmate", href: "/topmate" },
+  { label: "Tutorials", href: "/#courses" },
+  { label: "Notes", href: "/#resources" },
+  { label: "Topmate", href: "https://topmate.io/mohitdecodes" },
 ];
 
 export const pagesLinks = [
-  { label: "Videos", href: "/videos" },
-  { label: "Courses", href: "/courses" },
-  { label: "Resources", href: "/resources" },
-  { label: "Blogs", href: "/blogs" },
-  { label: "Roadmap", href: "/roadmap" },
+  { label: "Videos", href: "/#videos" },
+  { label: "Resources", href: "/#resources" },
+  { label: "Blogs", href: "/#blogs" },
+  { label: "Roadmap", href: "/#roadmaps" },
 ];
