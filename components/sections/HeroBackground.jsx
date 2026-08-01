@@ -1,26 +1,10 @@
 "use client";
 
-export function getColors(theme) {
-  return theme === "light"
-    ? {
-        bg: "#fbfaf9", surface: "rgba(17,17,20,0.04)", surfaceHover: "rgba(17,17,20,0.07)",
-        border: "rgba(17,17,20,0.1)", text: "#111114", textMuted: "rgba(17,17,20,0.64)",
-        textFaint: "rgba(17,17,20,0.42)", accent: "#7c3aed", accentBright: "#4f46e5",
-        accentSoft: "#7c3aed", navBg: "rgba(251,250,249,0.78)", orbitStroke: "rgba(17,17,20,0.1)",
-      }
-    : {
-        bg: "#050506", surface: "rgba(255,255,255,0.04)", surfaceHover: "rgba(255,255,255,0.07)",
-        border: "rgba(255,255,255,0.09)", text: "#f4f4f6", textMuted: "rgba(244,244,246,0.64)",
-        textFaint: "rgba(244,244,246,0.42)", accent: "#8b5cf6", accentBright: "#6366f1",
-        accentSoft: "#c4b5fd", navBg: "rgba(5,5,6,0.72)", orbitStroke: "rgba(255,255,255,0.09)",
-      };
-}
-
 // background stars, scattered
 const PARTICLES = [
-  [300, 220, 2, "accentSoft"], [1640, 180, 1.6, "#ffffff"], [1780, 380, 2, "accentSoft"],
-  [140, 420, 1.6, "#ffffff"], [960, 120, 1.6, "#ffffff"], [700, 230, 1.4, "accentSoft"],
-  [1220, 260, 1.4, "accentSoft"],
+  [300, 220, 2, "var(--accent-soft)"], [1640, 180, 1.6, "#ffffff"], [1780, 380, 2, "var(--accent-soft)"],
+  [140, 420, 1.6, "#ffffff"], [960, 120, 1.6, "#ffffff"], [700, 230, 1.4, "var(--accent-soft)"],
+  [1220, 260, 1.4, "var(--accent-soft)"],
 ];
 
 // [cx, cy, r, opacity, pulseDurationSec, pulseDelaySec] - sparkle field fanning up from the light source
@@ -116,31 +100,26 @@ const KEYFRAMES = `
  * Decorative hero background: bottom-anchored "sunrise" light bloom, a thin
  * upward sparkle field, and two orbit rings carrying 4 swaying tech-icon nodes.
  * Wrap your hero copy as children - they render above the effects (z-index 10).
+ * Colors read directly from the global theme variables in globals.css, so
+ * this component needs no theme prop and does no work on theme toggle.
  */
-export default function HeroBackground({ theme = "dark", children, className = "" }) {
-  const c = getColors(theme);
-  const vars = {
-    "--bg": c.bg, "--accent": c.accent, "--accentBright": c.accentBright,
-    "--border": c.border, "--orbitStroke": c.orbitStroke,
-  };
-
+export default function HeroBackground({ children, className = "" }) {
   return (
     <div
-      className={`relative min-h-fit lg:min-h-screen overflow-hidden ${className}`}
-      style={{ ...vars, background: "var(--bg)", fontFamily: "'Inter', sans-serif", transition: "background .4s ease" }}
+      className={`relative min-h-fit lg:min-h-screen overflow-hidden bg-background font-sans transition-[background] duration-400 ease-in-out ${className}`}
     >
       <style>{KEYFRAMES}</style>
 
       <div
         style={{
           position: "absolute", inset: 0, pointerEvents: "none", zIndex: 1,
-          background: "radial-gradient(circle at 50% 100%, transparent 34%, var(--bg) 92%)",
+          background: "radial-gradient(circle at 50% 100%, transparent 34%, var(--background) 92%)",
           opacity: 0.55,
         }}
       />
 
       <div style={{ position: "absolute", left: "50%", bottom: "-30vh", width: "160vw", height: "118vh", marginLeft: "-75vw", background: "radial-gradient(ellipse at 50% 100%, var(--accent) 0%, transparent 64%)", opacity: 0.42, filter: "blur(48px)", pointerEvents: "none", zIndex: 1 }} />
-      <div style={{ position: "absolute", left: "50%", bottom: "-16vh", width: "104vw", height: "86vh", marginLeft: "-48vw", background: "radial-gradient(ellipse at 50% 100%, var(--accentBright) 0%, transparent 66%)", opacity: 0.4, filter: "blur(50px)", pointerEvents: "none", zIndex: 1 }} />
+      <div style={{ position: "absolute", left: "50%", bottom: "-16vh", width: "104vw", height: "86vh", marginLeft: "-48vw", background: "radial-gradient(ellipse at 50% 100%, var(--accent-bright) 0%, transparent 66%)", opacity: 0.4, filter: "blur(50px)", pointerEvents: "none", zIndex: 1 }} />
       <div style={{ position: "absolute", left: "50%", bottom: "-8vh", width: "70vw", height: "58vh", marginLeft: "-31vw", background: "radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.34) 0%, var(--accent) 36%, transparent 76%)", opacity: 0.5, filter: "blur(60px)", pointerEvents: "none", zIndex: 1 }} />
       <div style={{ position: "absolute", left: "50%", bottom: "-6vh", width: "56vw", height: "104vh", marginLeft: "-28vw", background: "radial-gradient(ellipse 42% 82% at 50% 100%, rgba(139,92,246,0.5) 0%, rgba(139,92,246,0.14) 45%, transparent 78%)", opacity: 0.5, filter: "blur(64px)", pointerEvents: "none", zIndex: 1 }} />
 
@@ -171,7 +150,7 @@ export default function HeroBackground({ theme = "dark", children, className = "
 
         <g opacity={0.5}>
           {PARTICLES.map(([cx, cy, r, fill], i) => (
-            <circle key={i} cx={cx} cy={cy} r={r} fill={fill === "accentSoft" ? c.accentSoft : fill} />
+            <circle key={i} cx={cx} cy={cy} r={r} fill={fill} />
           ))}
         </g>
 
@@ -183,8 +162,8 @@ export default function HeroBackground({ theme = "dark", children, className = "
         </g>
 
         <g>
-          <circle cx="960" cy="1550" r="850" fill="none" stroke="var(--orbitStroke)" strokeWidth="1" filter="url(#om-orbit-blur)" />
-          <circle cx="960" cy="1550" r="1050" fill="none" stroke="var(--orbitStroke)" strokeWidth="1" filter="url(#om-orbit-blur)" />
+          <circle cx="960" cy="1550" r="850" fill="none" stroke="var(--border)" strokeWidth="1" filter="url(#om-orbit-blur)" />
+          <circle cx="960" cy="1550" r="1050" fill="none" stroke="var(--border)" strokeWidth="1" filter="url(#om-orbit-blur)" />
         </g>
 
         <g>
@@ -231,7 +210,7 @@ export default function HeroBackground({ theme = "dark", children, className = "
         aria-hidden="true"
         style={{
           position: "absolute", left: 0, right: 0, bottom: 0, height: "45%", minHeight: 200,
-          background: "linear-gradient(to bottom, transparent 0%, transparent 55%, var(--bg) 96%)",
+          background: "linear-gradient(to bottom, transparent 0%, transparent 55%, var(--background) 96%)",
           pointerEvents: "none", zIndex: 2,
         }}
       />

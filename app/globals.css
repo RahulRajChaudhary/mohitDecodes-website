@@ -9,7 +9,11 @@
   --border: #e2e2e2;
   --foreground: #111114;
   --accent: #7c3aed;
+  --accent-bright: #4f46e5;
   --accent-soft: #7c3aed;
+  --glass-bg: rgba(17, 17, 20, 0.04);
+  --glass-bg-hover: rgba(17, 17, 20, 0.07);
+  --glass-border: rgba(17, 17, 20, 0.1);
 }
 
 [data-theme="dark"] {
@@ -19,7 +23,11 @@
   --border: #232327;
   --foreground: #f4f4f6;
   --accent: #8b5cf6;
+  --accent-bright: #6366f1;
   --accent-soft: #c4b5fd;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg-hover: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.09);
 }
 
 @theme inline {
@@ -29,7 +37,11 @@
   --color-border: var(--border);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
   --color-accent-soft: var(--accent-soft);
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-bg-hover: var(--glass-bg-hover);
+  --color-glass-border: var(--glass-border);
   --font-sans: var(--font-inter);
   --font-heading: var(--font-space-grotesk);
   --font-mono: var(--font-jetbrains-mono);

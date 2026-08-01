@@ -1,8 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { useTheme } from "@/components/layout/ThemeProvider";
-import { getColors } from "./HeroBackground";
 
 const GRID_STYLES = `
   .om-video-grid {
@@ -25,23 +21,13 @@ function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
-function VideoCard({ video, big, c }) {
+function VideoCard({ video, big }) {
   return (
     <a
       href={video.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={big ? "om-video-big" : ""}
-      style={{
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        borderRadius: 16,
-        overflow: "hidden",
-        border: `1px solid ${c.border}`,
-        background: c.surface,
-        textDecoration: "none",
-      }}
+      className={`flex flex-col overflow-hidden rounded-2xl border border-border bg-surface no-underline ${big ? "om-video-big" : ""}`}
     >
       <div className={`om-video-media${big ? " om-video-media-big" : ""}`}>
         <Image
@@ -49,56 +35,36 @@ function VideoCard({ video, big, c }) {
           alt={video.title}
           fill
           sizes={big ? "(max-width: 780px) 100vw, 40vw" : "(max-width: 780px) 100vw, 20vw"}
-          style={{ objectFit: "cover" }}
+          className="object-cover"
         />
       </div>
-      <div style={{ padding: "12px 14px" }}>
+      <div className="px-3.5 py-3">
         <div
-          style={{
-            fontSize: big ? 16 : 13,
-            fontWeight: 600,
-            color: c.text,
-            lineHeight: 1.35,
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
-          }}
+          className={`${big ? "text-base" : "text-[13px]"} line-clamp-2 font-semibold leading-[1.35] text-foreground`}
         >
           {video.title}
         </div>
-        <div style={{ marginTop: 6, fontSize: 11, color: c.textMuted }}>{formatDate(video.publishedAt)}</div>
+        <div className="mt-1.5 text-[11px] text-foreground/64">{formatDate(video.publishedAt)}</div>
       </div>
     </a>
   );
 }
 
 export default function VideosSection({ videos = [] }) {
-  const { theme } = useTheme();
-  const c = getColors(theme);
-
   if (videos.length === 0) return null;
 
   const [big, ...rest] = videos;
 
   return (
-    <section id="videos" style={{ maxWidth: 1120, margin: "0 auto", padding: "clamp(40px,8vh,80px) 24px" }}>
+    <section id="videos" className="mx-auto max-w-[1120px] px-6 py-[clamp(40px,8vh,80px)]">
       <style>{GRID_STYLES}</style>
-      <h2
-        style={{
-          fontFamily: "'Space Grotesk', sans-serif",
-          fontWeight: 700,
-          fontSize: "clamp(24px,3vw,34px)",
-          color: c.text,
-          marginBottom: 28,
-        }}
-      >
+      <h2 className="mb-7 font-heading text-[clamp(24px,3vw,34px)] font-bold text-foreground">
         Latest Videos
       </h2>
       <div className="om-video-grid">
-        <VideoCard video={big} big c={c} />
+        <VideoCard video={big} big />
         {rest.slice(0, 4).map((v) => (
-          <VideoCard key={v.id} video={v} c={c} />
+          <VideoCard key={v.id} video={v} />
         ))}
       </div>
     </section>
