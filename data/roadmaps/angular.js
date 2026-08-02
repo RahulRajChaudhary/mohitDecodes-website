@@ -1,0 +1,32 @@
+export const nodes = [
+  { id: "angular-intro-setup", label: "Intro & Setup", x: 0, y: 0, video: "https://www.youtube.com/watch?v=6n0vYBcM9Lg" },
+  { id: "components-basics", label: "Components", x: 0, y: 120, video: "https://www.youtube.com/watch?v=83rUILQQAGw" },
+  { id: "events-binding", label: "Events & Binding", x: 0, y: 240, video: "https://www.youtube.com/watch?v=5J0JuTIHAZA" },
+  { id: "styling-control-flow", label: "Styling & Control Flow", x: 0, y: 360, video: "https://www.youtube.com/watch?v=gDEuRQT0h0w" },
+  { id: "loops-directives", label: "Loops & Directives", x: 0, y: 480, video: "https://www.youtube.com/watch?v=lTxKnyxt69A" },
+  { id: "signals", label: "Signals", x: 0, y: 600, video: "https://www.youtube.com/watch?v=m_NdDqN76jk" },
+  { id: "pipes", label: "Pipes", x: 0, y: 720, video: "https://www.youtube.com/watch?v=PQQGkUCfakM" },
+  { id: "two-way-binding-forms", label: "Forms & Two-Way Binding", x: 0, y: 840, video: "https://www.youtube.com/watch?v=IYZOgohmerU" },
+  { id: "routing", label: "Routing", x: 0, y: 960, video: "https://www.youtube.com/watch?v=qNDtnEyapjk" },
+  { id: "lifecycle-hooks", label: "Lifecycle Hooks", x: 0, y: 1080, video: "https://www.youtube.com/watch?v=i9BEOyTbA_Y" },
+  { id: "http-client-api", label: "HTTP Client & APIs", x: 0, y: 1200, video: "https://www.youtube.com/watch?v=xfxacc3TPec" },
+  { id: "styling-libraries", label: "UI Libraries", x: 0, y: 1320, video: "https://www.youtube.com/watch?v=OJVxmk7yE54" },
+  { id: "deployment", label: "Deployment", x: 0, y: 1440, video: "https://www.youtube.com/watch?v=01cUvmXX5Q4" },
+  { id: "ngrx-state-management", label: "NgRx State Management", x: 0, y: 1560, video: "https://www.youtube.com/watch?v=f31xwffy-H0" },
+];
+
+export const edges = [
+  { source: "angular-intro-setup", target: "components-basics" },
+  { source: "components-basics", target: "events-binding" },
+  { source: "events-binding", target: "styling-control-flow" },
+  { source: "styling-control-flow", target: "loops-directives" },
+  { source: "loops-directives", target: "signals" },
+  { source: "signals", target: "pipes" },
+  { source: "pipes", target: "two-way-binding-forms" },
+  { source: "two-way-binding-forms", target: "routing" },
+  { source: "routing", target: "lifecycle-hooks" },
+  { source: "lifecycle-hooks", target: "http-client-api" },
+  { source: "http-client-api", target: "styling-libraries" },
+  { source: "styling-libraries", target: "deployment" },
+  { source: "deployment", target: "ngrx-state-management" },
+];

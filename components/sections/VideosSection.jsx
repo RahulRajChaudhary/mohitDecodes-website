@@ -27,7 +27,7 @@ function VideoCard({ video, big }) {
       href={video.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`flex flex-col overflow-hidden rounded-2xl border border-border bg-surface no-underline ${big ? "om-video-big" : ""}`}
+      className={`group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface no-underline transition duration-300 ease-out hover:border-accent/40 hover:shadow-lg motion-safe:hover:-translate-y-1 ${big ? "om-video-big" : ""}`}
     >
       <div className={`om-video-media${big ? " om-video-media-big" : ""}`}>
         <Image
@@ -35,12 +35,12 @@ function VideoCard({ video, big }) {
           alt={video.title}
           fill
           sizes={big ? "(max-width: 780px) 100vw, 40vw" : "(max-width: 780px) 100vw, 20vw"}
-          className="object-cover"
+          className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"
         />
       </div>
       <div className="px-3.5 py-3">
         <div
-          className={`${big ? "text-base" : "text-[13px]"} line-clamp-2 font-semibold leading-[1.35] text-foreground`}
+          className={`${big ? "text-base" : "text-[13px]"} line-clamp-2 font-semibold leading-[1.35] text-foreground transition-colors duration-300 group-hover:text-accent`}
         >
           {video.title}
         </div>

@@ -1,0 +1,32 @@
+export const nodes = [
+  { id: "django-intro", label: "Django Intro & MVT", x: 0, y: 0, video: "https://www.youtube.com/watch?v=K2QhLEzYBH8" },
+  { id: "project-setup", label: "Project Setup", x: 0, y: 120, video: "https://www.youtube.com/watch?v=kWsj_AWLDmU" },
+  { id: "views-urls", label: "Views & URLs", x: 0, y: 240, video: "https://www.youtube.com/watch?v=8360g6H7NQ4" },
+  { id: "templates", label: "Templates", x: 0, y: 360, video: "https://www.youtube.com/watch?v=VLsLd6oVrQc" },
+  { id: "styling-django", label: "Styling (Bootstrap/Tailwind)", x: 0, y: 480, video: "https://www.youtube.com/watch?v=Xw8tTHJBU6U" },
+  { id: "models-orm", label: "Models & ORM", x: 0, y: 600, video: "https://www.youtube.com/watch?v=nVP58CgH0aU" },
+  { id: "django-admin", label: "Django Admin", x: 0, y: 720, video: "https://www.youtube.com/watch?v=8mLfThgj-oU" },
+  { id: "forms-crud", label: "Forms & CRUD", x: 0, y: 840, video: "https://www.youtube.com/watch?v=eGPd8F5TK1I" },
+  { id: "class-based-views", label: "Class-Based Views", x: 0, y: 960, video: "https://www.youtube.com/watch?v=Yz0f9euKde4" },
+  { id: "middleware-signals", label: "Middleware & Signals", x: 0, y: 1080, video: "https://www.youtube.com/watch?v=_MUfWhBau5c" },
+  { id: "sessions-cookies-email", label: "Sessions, Cookies & Email", x: 0, y: 1200, video: "https://www.youtube.com/watch?v=1kuWmpwdH4s" },
+  { id: "caching", label: "Caching", x: 0, y: 1320, video: "https://www.youtube.com/watch?v=fWbmbee1Br8" },
+  { id: "django-rest-framework", label: "Django REST Framework", x: 0, y: 1440, video: "https://www.youtube.com/watch?v=Vm0G1c_Lw8s" },
+  { id: "drf-auth", label: "DRF Authentication", x: 0, y: 1560, video: "https://www.youtube.com/watch?v=XS-3T89ENko" },
+];
+
+export const edges = [
+  { source: "django-intro", target: "project-setup" },
+  { source: "project-setup", target: "views-urls" },
+  { source: "views-urls", target: "templates" },
+  { source: "templates", target: "styling-django" },
+  { source: "styling-django", target: "models-orm" },
+  { source: "models-orm", target: "django-admin" },
+  { source: "django-admin", target: "forms-crud" },
+  { source: "forms-crud", target: "class-based-views" },
+  { source: "class-based-views", target: "middleware-signals" },
+  { source: "middleware-signals", target: "sessions-cookies-email" },
+  { source: "sessions-cookies-email", target: "caching" },
+  { source: "caching", target: "django-rest-framework" },
+  { source: "django-rest-framework", target: "drf-auth" },
+];

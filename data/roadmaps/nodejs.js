@@ -1,0 +1,30 @@
+export const nodes = [
+  { id: "node-intro", label: "Node.js Intro", x: 0, y: 0, video: "https://www.youtube.com/watch?v=lshMCvaFF0g" },
+  { id: "core-modules", label: "Core Language & Modules", x: 0, y: 120, video: "https://www.youtube.com/watch?v=HpSotpPzXYM" },
+  { id: "npm-packages", label: "NPM & Packages", x: 0, y: 240, video: "https://www.youtube.com/watch?v=KIHbhYizAJQ" },
+  { id: "http-module", label: "HTTP Module", x: 0, y: 360, video: "https://www.youtube.com/watch?v=Me-8YdTTx1I" },
+  { id: "building-apis", label: "Building APIs", x: 0, y: 480, video: "https://www.youtube.com/watch?v=P7aqtoZ8inQ" },
+  { id: "expressjs-basics", label: "Express.js Basics", x: 0, y: 600, video: "https://www.youtube.com/watch?v=BKFAW-87rUI" },
+  { id: "express-routing-middleware", label: "Routing & Middleware", x: 0, y: 720, video: "https://www.youtube.com/watch?v=Qp2iBWWmP_E" },
+  { id: "express-project", label: "Express Project", x: 0, y: 840, video: "https://www.youtube.com/watch?v=bmwcQdCqlFI" },
+  { id: "mongodb-basics", label: "MongoDB Basics", x: 0, y: 960, video: "https://www.youtube.com/watch?v=03zThyaFx4U" },
+  { id: "mongodb-integration", label: "MongoDB + Node.js", x: 0, y: 1080, video: "https://www.youtube.com/watch?v=D_fu9uRsA4A" },
+  { id: "mongoose", label: "Mongoose", x: 0, y: 1200, video: "https://www.youtube.com/watch?v=o44ibg7PiMM" },
+  { id: "mongodb-atlas", label: "MongoDB Atlas", x: 0, y: 1320, video: "https://www.youtube.com/watch?v=soWr2LNnzg8" },
+  { id: "auth-security", label: "Auth & Security", x: 0, y: 1440, video: "https://www.youtube.com/watch?v=hM-15Y0lMzs" },
+];
+
+export const edges = [
+  { source: "node-intro", target: "core-modules" },
+  { source: "core-modules", target: "npm-packages" },
+  { source: "npm-packages", target: "http-module" },
+  { source: "http-module", target: "building-apis" },
+  { source: "building-apis", target: "expressjs-basics" },
+  { source: "expressjs-basics", target: "express-routing-middleware" },
+  { source: "express-routing-middleware", target: "express-project" },
+  { source: "express-project", target: "mongodb-basics" },
+  { source: "mongodb-basics", target: "mongodb-integration" },
+  { source: "mongodb-integration", target: "mongoose" },
+  { source: "mongoose", target: "mongodb-atlas" },
+  { source: "mongodb-atlas", target: "auth-security" },
+];
