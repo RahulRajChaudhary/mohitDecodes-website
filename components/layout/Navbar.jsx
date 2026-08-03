@@ -1,21 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FiMenu, FiX, FiSearch } from "react-icons/fi";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
-import useScrollSpy from "@/lib/useScrollSpy";
 
 const navLinks = [
-  { label: "Videos", href: "/#videos" },
-  { label: "Resources", href: "/#resources" },
-  { label: "Blogs", href: "/#blogs" },
-  { label: "Roadmaps", href: "/#roadmaps" },
-  { label: "About", href: "/#about" },
+  { label: "Videos", href: "/videos" },
+  { label: "Resources", href: "/resources" },
+  { label: "Blogs", href: "/blogs" },
+  { label: "Roadmaps", href: "/roadmaps" },
+  { label: "About", href: "/about" },
 ];
-
-const SECTION_IDS = ["videos", "resources", "blogs", "roadmaps", "about"];
 
 const DOCK_RANGE = [0, 120];
 const DOCKED_WIDTH = 1120; // wide enough for 7 links + Topmate + utility buttons
@@ -25,25 +23,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
   const { scrollY } = useScroll();
-  useScrollSpy(SECTION_IDS);
+  const pathname = usePathname();
 
-  function handleNavClick(e, href) {
-    if (typeof window === "undefined" || window.location.pathname !== "/") return;
-    const id = href.replace("/#", "");
-    const el = document.getElementById(id);
-    if (!el) return;
-    e.preventDefault();
-    el.scrollIntoView({ behavior: "smooth" });
-    window.history.pushState(null, "", `#${id}`);
-  }
-
-  // Continuous, live scroll mapping — no lock, no memory. Reflects
-  // wherever scrollY actually is right now, on whatever page you're on,
-  // in both directions. A fresh page load legitimately starts at 0
-  // (full width) even if the previous page was scrolled/docked.
-  // Each raw transform is piped through useSpring so instant jumps in
-  // scrollY (e.g. Next.js resetting scroll to 0 on navigation) animate
-  // smoothly toward the new value instead of snapping in one frame.
+ 
   const spring = { stiffness: 260, damping: 32 };
   const maxWidth = useSpring(
     useTransform(scrollY, DOCK_RANGE, [FULL_WIDTH, DOCKED_WIDTH]),
@@ -61,6 +43,25 @@ export default function Navbar() {
     useTransform(scrollY, DOCK_RANGE, [0, 1]),
     spring
   );
+
+  // Next.js resets window scroll to 0 on route change, but only *after*
+  // paint, so jumping straight to the undocked state here could still be
+  // one frame out of sync with wherever scrollY actually is (causing a
+  // dock -> undock -> redock flash). Read the real scroll position and
+  // jump straight to the state it maps to, instead of assuming 0.
+  // useLayoutEffect runs synchronously before paint, so the jump is
+  // never visible even if it turns out to be a no-op.
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- motion values are stable across renders
+  useLayoutEffect(() => {
+    const y = window.scrollY;
+    const clamped = Math.min(Math.max(y, DOCK_RANGE[0]), DOCK_RANGE[1]);
+    const t = (clamped - DOCK_RANGE[0]) / (DOCK_RANGE[1] - DOCK_RANGE[0]);
+
+    maxWidth.jump(FULL_WIDTH + t * (DOCKED_WIDTH - FULL_WIDTH));
+    borderRadius.jump(t * 9999);
+    marginTop.jump(t * 16);
+    bgOpacity.jump(t);
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 px-4">
@@ -91,8 +92,9 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onMouseEnter={() => setHoveredLink(link.label)}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className="relative rounded-full px-3 py-2 text-sm text-foreground/80 transition-colors hover:text-foreground"
+              className={`relative rounded-full px-3 py-2 text-sm transition-colors hover:text-foreground ${
+                pathname === link.href ? "text-foreground font-medium" : "text-foreground/80"
+              }`}
             >
               <span className="relative z-10">{link.label}</span>
               {hoveredLink === link.label && (
@@ -146,11 +148,10 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              onClick={(e) => {
-                handleNavClick(e, link.href);
-                setIsOpen(false);
-              }}
-              className="rounded-md px-2 py-2 text-sm text-foreground/80 transition-colors hover:bg-surface-hover hover:text-foreground"
+              onClick={() => setIsOpen(false)}
+              className={`rounded-md px-2 py-2 text-sm transition-colors hover:bg-surface-hover hover:text-foreground ${
+                pathname === link.href ? "text-foreground font-medium" : "text-foreground/80"
+              }`}
             >
               {link.label}
             </Link>

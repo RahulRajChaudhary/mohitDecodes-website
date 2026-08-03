@@ -29,7 +29,7 @@ export default async function RoadmapPage({ params }) {
   const { nodes } = await import(`@/data/roadmaps/${slug}.js`);
 
   return (
-    <section className="mx-auto max-w-[720px] px-6 py-[clamp(32px,6vh,64px)]">
+    <section className="mx-auto max-w-[720px] px-6 pt-5 pb-[clamp(32px,6vh,64px)] md:pt-9 lg:pt-[clamp(32px,6vh,64px)]">
       <h1 className="mb-2 font-heading text-[clamp(28px,4vw,40px)] font-bold text-foreground">
         {roadmap.icon} {roadmap.title}
       </h1>

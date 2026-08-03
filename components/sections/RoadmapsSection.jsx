@@ -1,12 +1,15 @@
+import Link from "next/link";
 import { roadmaps } from "@/data/roadmaps";
 import RoadmapCard from "@/components/roadmaps/RoadmapCard";
 
 export default function RoadmapsSection() {
   return (
-    <section id="roadmaps" className="mx-auto max-w-[1120px] px-6 py-[clamp(40px,8vh,80px)]">
-      <h2 className="mb-3 font-heading text-[clamp(24px,3vw,34px)] font-bold text-foreground">
-        Roadmaps
-      </h2>
+    <section id="roadmaps" className="mx-auto max-w-[1120px] px-6 pt-6 pb-[clamp(40px,8vh,80px)] md:pt-12 lg:pt-[clamp(40px,8vh,80px)]">
+      <Link href="/roadmaps" className="mb-3 block w-fit no-underline">
+        <h2 className="font-heading text-[clamp(24px,3vw,34px)] font-bold text-foreground transition-colors hover:text-accent">
+          Roadmaps
+        </h2>
+      </Link>
       <p className="mb-7 max-w-[640px] text-[15px] text-foreground/64">
         Structured learning paths built from topics already covered on the channel.
       </p>

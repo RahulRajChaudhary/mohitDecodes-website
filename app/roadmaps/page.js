@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function RoadmapsIndexPage() {
   return (
-    <section className="mx-auto max-w-[1120px] px-6 py-[clamp(40px,8vh,80px)]">
+    <section className="mx-auto max-w-[1120px] px-6 pt-6 pb-[clamp(40px,8vh,80px)] md:pt-12 lg:pt-[clamp(40px,8vh,80px)]">
       <h1 className="mb-3 font-heading text-[clamp(28px,4vw,40px)] font-bold text-foreground">
         Roadmaps
       </h1>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
 
 export default function About() {
@@ -44,10 +45,12 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="mx-auto max-w-[1120px] px-8 py-[clamp(40px,8vh,80px)]">
-      <h2 className="font-heading text-[clamp(24px,3vw,34px)] font-bold text-foreground">
-        Meet Your Mentor
-      </h2>
+    <section id="about" className="mx-auto max-w-[1120px] px-8 pt-6 pb-[clamp(40px,8vh,80px)] md:pt-12 lg:pt-[clamp(40px,8vh,80px)]">
+      <Link href="/about" className="block w-fit no-underline">
+        <h2 className="font-heading text-[clamp(24px,3vw,34px)] font-bold text-foreground transition-colors hover:text-accent">
+          Meet Your Mentor
+        </h2>
+      </Link>
       <p className="mt-3 max-w-[720px] text-[15px] leading-relaxed text-foreground/64">
         Engineering Manager at Paytm | React.js | Next.js | JavaScript | Python | Career Mentor
         | Founder @ Inkurb Web Solution | Co-Founder @ Webninjas | Ex-HCL
